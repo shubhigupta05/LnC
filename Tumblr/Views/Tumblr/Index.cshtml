@@ -1,0 +1,50 @@
+﻿@model Tumblr_API.Models.Tumblr_Detail
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<h2>Tumblr Posts</h2>
+
+<html>
+    <body>
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h6>Description: @Model.tumblelog.description</h6>
+                <h6>Name: @Model.tumblelog.name</h6>
+                <h6>Timezone: @Model.tumblelog.timezone</h6>
+                <h6>Total Posts: @Model.posts_total</h6>
+                <br /><br /><br />
+
+                @foreach (var item in Model.posts)
+                {
+                    <div>
+                        Upload Date: @item.date
+                    </div>
+
+                    @if (@item.tags != null)
+                    {
+                        <div>
+                            Tagged:
+                            @for (int allTag = 0; allTag < item.tags.Count; allTag++)
+                            {
+                                if (allTag > 0)
+                                {
+                                    <text>,&nbsp;</text>;
+                                }
+                                @item.tags[allTag];
+                            }
+                        </div>
+                    }
+                    <div>
+                        <a href=@item.photo_url_1280> <img src=@item.photo_url_1280 width=@item.width height=@item.height> </a>
+                    </div>
+                    <br />
+                    <hr />
+                }
+
+            </div>
+        </div>
+    </body>
+</html>
