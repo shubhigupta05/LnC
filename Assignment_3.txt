@@ -1,0 +1,102 @@
+Assignment 3: Comments
+Tumblr is an American microblogging and social networking website founded by David Karp in 2007 and currently owned by Automattic. 
+
+The service allows users to post multimedia and other content to a short-form blog.
+
+https://www.tumblr.com/
+
+https://en.wikipedia.org/wiki/Tumblr
+
+
+
+Tumblr provides API to get info about public blogs. However, there are two versions of API, v1 and v2.
+
+For this assignment, we are going to use API v1.
+
+https://www.tumblr.com/docs/en/api/v1
+
+
+
+ex: https://good.tumblr.com/api/read/json?type=photo&num=50&start=0
+
+
+
+Input:
+
+1. Any blog name (Tumblr blog URL format: blog_name.tumblr.com)
+
+   ex: good (Tumblr blog URL would be good.tumblr.com)
+
+2. Post Range (start - end)
+
+   Minimum - 1
+
+   Maximum - no of post
+
+   ex. 88-100
+
+
+
+Output:
+
+For any given blog using Tumblr API v1, you have to print the following info:
+
+1. Basic info of the blog. ("title", "description","name","no of post")
+
+2. List of URL of all the images for the given post range (of the highest quality image i.e. 1280 format ).
+
+   {post_no. image_link}
+
+
+
+Note:
+
+1. Make use of proper comments wherever required as discussed in Learn and code session.
+
+2. One post can contain several pictures. you have to print all for a given post.
+
+3. Use https else you will get an error.
+
+4. JSON should be used instead of XML for API. 
+
+
+
+
+
+ex:
+
+-------------------------------------------------------------------------------------------------------
+
+| enter the Tumblr blog name:                                                                         |                              
+
+| good                                                                                                |     
+
+|                                                                                                     | 
+
+| enter the range:                                                                                    |                  
+
+| 1-5                                                                                                 |    
+
+|                                                                                                     | 
+
+| title:                                                                                              |        
+
+| name: good                                                                                          |            
+
+| description: Live Well. Do Good.                                                                    |
+
+| no of post: 2182                                                                                    |
+
+|                                                                                                     |   
+
+| 1. https://66.media.tumblr.com/fb7d65b760ddcf6f3293e5a8e4484358/tumblr_on4jrhF3ZT1qjq5r9o1_500.png  |
+
+|    https://66.media.tumblr.com/e3a2b8f284c2833dcaaf2ff9787f5ef9/tumblr_on4jrhF3ZT1qjq5r9o2_640.png  |
+
+| 2. https://66.media.tumblr.com/2b2f2113520c4e9ed17c5cdd06ba6c2f/tumblr_obthv5IUes1qjq5r9o1_1280.jpg |
+
+| 3. https://66.media.tumblr.com/d494984b74bc191e6b8e99301157f2f2/tumblr_o9nolw7si01qjq5r9o1_1280.jpg |
+
+| 4. https://66.media.tumblr.com/ef9ac5b85ed8a70c7f313f913213ef61/tumblr_o9hu3pKRUR1qjq5r9o1_1280.jpg |
+
+| 5. https://66.media.tumblr.com/9c528fcb45530501cf100ac2dc50abae/tumblr_o9fx66HdfB1qjq5r9o1_500.gif  |
