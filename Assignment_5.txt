@@ -1,0 +1,92 @@
+Assignment 1. 
+
+Class Employee 
+{
+	string name;
+	int age;
+	float salary;
+
+	public : string getName();
+	void setName(string name);
+	
+	int getAge();
+	void setAge(int age);
+	
+	float getSalary();
+	void setSalary(float salary);
+};
+
+Employee employee;
+
+ Is 'employee' an object or a data structure? Why?
+ 
+ Answer: It represents a data structure. Another class can use this class by creating it's object.Variables and methods are independent, so user need not to set or get all data together.
+ Employee class showing the functionality of getter and setter methods. This class can work as a Abstract/Interface class, if I modify it with these keywords.
+ 
+
+Assignment 2. 
+Look at the below classes and the client code given below on how the object are used and methods invoked. Is there a better way to write the Customer class?
+
+public abstract class Customer 
+{
+	private String firstName;
+	private String lastName;
+	private Wallet myWallet;
+	
+	public String getFirstName()
+	{
+		return firstName;
+	}
+
+	public String getLastName()
+	{
+		return lastName;
+	}
+
+	public Wallet getWallet()
+	{
+		return myWallet;
+	}
+}
+
+public class Wallet 
+{
+	private float value;
+
+	public float getTotalMoney() 
+	{
+		return value;
+	}
+
+	public void setTotalMoney(float newValue) 
+	{
+		value = newValue;
+	}
+
+	public void addMoney(float deposit) 
+	{
+		value += deposit;
+	}
+
+	public void subtractMoney(float debit) 
+	{
+		value -= debit;
+	}
+}
+
+Client code…. assuming some delivery boy wants to get his payment
+
+// code from some method inside the delivery boy class... payment = 2.00; //
+
+ “I want my two dollars!”
+
+Wallet theWallet = myCustomer.getWallet();
+
+if (theWallet.getTotalMoney() > payment) 
+{
+	theWallet.subtractMoney(payment);
+} 
+else 
+{
+	// come back later and get my money
+}
