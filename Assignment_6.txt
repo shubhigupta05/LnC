@@ -1,0 +1,157 @@
+Assignment-6 : Error Handling
+I want to simulate some of the ATM machine behavior :
+1. Withdraw cash from ATM 
+
+2. Insufficient cash available in ATM machine / Account
+
+3. Unable to connect with server
+
+4. The card will get block after 3 invalid pin attempts 
+
+
+    class Program
+    {
+		int connectionAttempts = 0;
+		int badPinAttempts = 0;
+
+		public static void Main(string[] args)
+        {
+			Program program = new Program();
+			int isMachineOnline = program.MachineOnline();
+			if (isMachineOnline == 1)
+			{
+				Console.WriteLine("Insert ATM");
+				if (program.ATMDetected())
+				{
+					Console.WriteLine("Enter your 4 digit PIN Number");
+
+					while(program.badPinAttempts < 3)
+                    {
+						int enteredPin = Convert.ToInt32(Console.ReadLine());
+						if (program.PinAttempts(enteredPin))
+						{
+							SelectRequestProcess();
+						}
+						else
+							Console.WriteLine("Please enter correct PIN");
+					}
+					if (program.badPinAttempts == 3)
+						Console.WriteLine("Your ATM is blocked. \nPlease contact Bank Customer Support.");
+				}
+				else
+					Console.WriteLine("ATM not detected");
+			}
+			else
+				Console.WriteLine("Unable to connect with server");
+
+			Console.ReadLine();
+		}
+
+		public static void SelectRequestProcess()
+        {
+			Program program = new Program();
+			while (true)
+			{
+				Console.WriteLine("\n Select options: \n 1. Balance Enquirey \n 2. Cash Withdrawal \n 3. Exit \n");
+				int userRequest = Convert.ToInt32(Console.ReadLine());
+
+				if (userRequest == 1)
+				{
+					Console.WriteLine("Available Balance in your Account: " + program.AvailableBalanceInMachine());
+				}
+				else if (userRequest == 2)
+				{
+					Console.WriteLine("Enter Amount: ");
+
+					string withdrawalResult = program.WithdrawCash(Convert.ToInt32(Console.ReadLine()));
+
+					if (withdrawalResult.Contains("allowCashWihdrawal"))
+						Console.WriteLine("Please collect your cash");
+					else
+						Console.WriteLine("Insufficient cash available in ATM machine / Account");
+				}
+				else if (userRequest == 3)
+					break;
+			}
+		}
+
+		public bool ATMDetected()
+        {
+			try
+			{
+				// Call API of ATM detector
+				return true; 
+			}
+			catch
+            {
+				return false;
+			}
+        }
+
+		public bool PinAttempts(int pin)
+        {
+			badPinAttempts++;
+			int defaultPin = 0000;
+			if (pin == defaultPin)
+				return true;
+			else
+				return false;
+		}
+
+		public int AvailableBalanceInMachine()
+		{
+			int availableAmount = 100000;
+			return availableAmount;
+		}
+
+		public string WithdrawCash(int withdrawalAmount)
+		{
+			if (withdrawalAmount <= AvailableBalanceInMachine())
+			{
+				return "allowCashWihdrawal";
+			}
+			else
+			{
+				return "insufficientBalance";
+			}
+		}
+
+		public bool ConnectToServer()
+		{
+			try
+			{
+				bool connectedToServer = true;
+				connectionAttempts++;
+				if (connectedToServer)
+					return true;
+				else
+					return false;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Connection Attempts Failed.");
+				return false;
+			}
+		}
+
+		public int MachineOnline()
+		{
+			if (ConnectToServer())
+			{
+				Console.WriteLine("Machine Available Online");
+				return 1;
+			}
+			else
+			{
+				if (connectionAttempts < 5)
+				{
+					return MachineOnline();
+				}
+				else
+				{
+					Console.WriteLine("Difficulty in making the connection to Server. Request to reboot machine for smooth connection.");
+					return 0;
+				}
+			}
+		}
+	}
