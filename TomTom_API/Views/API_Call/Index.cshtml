@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TOMTOM API</title>
+</head>
+<body>
+   
+    <form method="post">
+        <div class="text-center">
+            <h1 class="display-4">TOMTOM API</h1>
+            <p>Search Latitude and Longitude by place name</p><br />
+
+            @using (Html.BeginForm("Index", "API_Call", FormMethod.Post))
+            {
+                <input type="text" name="PlaceName" id="txtPlaceName" placeholder="Enter place name" />
+                <input type="submit" value="Search" id="btnSearch" />
+
+                <h3>
+                    @ViewBag.Latitude
+                    <br />
+                    @ViewBag.Longitude
+                </h3>
+                
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <script type="text/javascript">
+
+                        window.onload = function () {
+                            alert("@ViewBag.ErrorMessage");
+                        };
+                    </script>
+                }
+            }
+        </div>
+    </form>
+</body>
+</html>
+

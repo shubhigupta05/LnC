@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+BnZbPLzM2votV7/Rkpeg/ft0K50yYG5uUe5z4vNBC4vPccmoycSWTQpnuRw2aUZmZTzJjsJya8yKEk1hRv0Dg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\shubhi.gupta\\Desktop\\LnC\\LnC\\TomTom_API\\TomTom_API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\shubhi.gupta\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
